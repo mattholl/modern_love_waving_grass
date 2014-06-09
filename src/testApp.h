@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "whiteLine.h"
 
 #define NUM_LINES = 4;
 #define LINES_RESOLUTION = 4;
@@ -22,5 +23,5 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     ofEasyCam cam;
-//    vector
+    vector<whiteLine> whiteLines;
 };

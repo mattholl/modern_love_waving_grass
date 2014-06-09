@@ -2,18 +2,52 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+    
+    //
+    
+    cam.setDistance(1000);
+//    cam.lookAt(ofVec3f(ofGetWidth()/2, ofGetHeight()/2, 0));
+    
+    // Create a line
+    whiteLine line;
+    line.setStart(ofVec3f(200, 200, 0));
+    
+    whiteLines.push_back(line);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+    
+    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     ofEnableDepthTest();
     ofBackground(0);
+    
+    ofPushMatrix();
+    
+        cam.begin();
+            ofDrawAxis(1000);
+    
+            for (int i = 0; i < whiteLines.size(); i++) {
+                ofPushMatrix();
+                    ofTranslate(whiteLines[i].startPos);
+                    ofSetColor(ofColor::white);
+                    ofSetLineWidth(whiteLines[i].width);
+                    whiteLines[i].draw();
+                ofPopMatrix();
+            }
+
+            // draw the lines vector foreach
+            // translate to startCoords
+            // draw line 0,0 to z + height
+        cam.end();
+
+    ofPopMatrix();
+    
+
 }
 
 //--------------------------------------------------------------
