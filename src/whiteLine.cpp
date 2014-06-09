@@ -11,7 +11,7 @@
 
 whiteLine::whiteLine() {
     // Default values
-    height = 50.0;
+    height = 100.0;
     
     // Float radians
     rotX = 0;
@@ -30,6 +30,11 @@ void whiteLine::setStart(ofVec3f start) {
 void whiteLine::setRotation(float radX, float radY) {
     rotX = radX;
     rotY = radY;
+}
+
+void whiteLine::updateRotation(float radX, float radY) {
+    rotX = rotX + radX;
+    rotY = rotY + radY;
 }
 
 void whiteLine::setHeight(float newHeight) {

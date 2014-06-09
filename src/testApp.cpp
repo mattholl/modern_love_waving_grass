@@ -3,31 +3,44 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-    // Calculate distance between lines
+    cam.setDistance(1000);
     
-    int xStride = ofGetWidth() / LINE_RESOLUTION;
-    int yStride = ofGetHeight() / LINE_RESOLUTION;
+    // Calculate distance between lines
+    int worldWidth = ofGetWidth() * 4;
+    int worldHeight = ofGetHeight() * 4;
+    
+    int halfWorldWidth = worldWidth / 2;
+    int halfWorldHeight = worldHeight / 2;
+    
+    int xStride = worldWidth / LINE_RESOLUTION;
+    int yStride = worldHeight / LINE_RESOLUTION;
     
     // Create the lines vector with the corect starting positions
-    for (int i = 0; i <= ofGetWidth(); i += xStride) {
-        for (int j = 0; j <= ofGetHeight(); j += yStride) {
+    for (int i = -halfWorldWidth; i <= halfWorldWidth; i += xStride) {
+        for (int j = -halfWorldHeight; j <= halfWorldHeight; j += yStride) {
+            
             whiteLine line;
-            line.setStart(ofVec3f(i, j, 0));
+            line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
+            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
+
             // Set height if required
+            float height = 150 + ofRandom(-10, 10);
+            line.setHeight(height);
+            
             whiteLines.push_back(line);
+            
         }
     }
-    
-    cam.setDistance(1000);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     float time = ofGetElapsedTimef();
-    float x = ofSignedNoise(time);
-    float y = ofSignedNoise(time - 1000);
+
     for (int i = 0; i < whiteLines.size(); i++) {
-        whiteLines[i].setRotation(x, y);
+        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
+        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
+        whiteLines[i].updateRotation(x, y);
         whiteLines[i].update();
     }
 }
@@ -36,11 +49,10 @@ void testApp::update(){
 void testApp::draw(){
     ofEnableDepthTest();
     ofBackground(0);
-    
     ofPushMatrix();
     
         cam.begin();
-            ofDrawAxis(1000);
+//            ofDrawAxis(1000);
             // Draw each line
             for (int i = 0; i < whiteLines.size(); i++) {
                 ofPushMatrix();
@@ -48,7 +60,9 @@ void testApp::draw(){
                     ofTranslate(whiteLines[i].startPos);
                     ofSetColor(ofColor::white);
                     ofSetLineWidth(whiteLines[i].width);
+
                     whiteLines[i].draw();
+
                 ofPopMatrix();
             }
         cam.end();
