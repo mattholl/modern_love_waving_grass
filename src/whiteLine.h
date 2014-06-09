@@ -19,6 +19,8 @@ public:
     whiteLine();
     
     ofVec3f startPos;
+    ofVec3f endPos;
+    
     float height;
     
     float rotX;
@@ -29,5 +31,6 @@ public:
     void setStart(ofVec3f start);
     void setRotation(float radX, float radY);
     void setHeight(float newHeight);
+    void update();
     void draw();
 };

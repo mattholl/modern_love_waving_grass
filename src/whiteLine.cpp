@@ -18,10 +18,13 @@ whiteLine::whiteLine() {
     rotY = 0;
     
     width = 5;
+    
+    startPos = ofVec3f();
+    endPos = ofVec3f();
 }
 
 void whiteLine::setStart(ofVec3f start) {
-    startPos = start;
+    startPos.set(start);
 }
 
 void whiteLine::setRotation(float radX, float radY) {
@@ -33,11 +36,14 @@ void whiteLine::setHeight(float newHeight) {
     height = newHeight;
 }
 
-void whiteLine::draw() {
+void whiteLine::update() {
     // calculate vec3 of the end point
     ofVec3f end = ofVec3f(0, 0, height);
     end.rotateRad(rotX, rotY, 0);
-    
+    endPos.set(end);
+}
+
+void whiteLine::draw() {
     // We're translating to the startPos within the draw function
-    ofLine(ofVec3f(0, 0, 0), end);
+    ofLine(ofVec3f(0, 0, 0), endPos);
 }
