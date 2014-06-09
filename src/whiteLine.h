@@ -27,5 +27,7 @@ public:
     int width;
     
     void setStart(ofVec3f start);
+    void setRotation(float radX, float radY);
+    void setHeight(float newHeight);
     void draw();
 };

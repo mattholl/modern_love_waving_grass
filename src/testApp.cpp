@@ -10,15 +10,23 @@ void testApp::setup(){
     
     // Create a line
     whiteLine line;
-    line.setStart(ofVec3f(200, 200, 0));
+    line.setStart(ofVec3f(0, 0, 0));
+    line.setHeight(100);
+
+    line.setRotation(0, -1);
     
     whiteLines.push_back(line);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
-    
+    float time = ofGetElapsedTimef();
+    float x = ofSignedNoise(time);
+    float y = ofSignedNoise(time - 1000);
+    for (int i = 0; i < whiteLines.size(); i++) {
+        
+        whiteLines[i].setRotation(x, y);
+    }
 }
 
 //--------------------------------------------------------------
