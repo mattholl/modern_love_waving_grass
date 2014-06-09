@@ -11,13 +11,13 @@
 
 whiteLine::whiteLine() {
     // Default values
-    height = 10.0;
+    height = 50.0;
     
     // Float radians
     rotX = 0;
     rotY = 0;
     
-    width = 5;
+    width = 1;
     
     startPos = ofVec3f();
     endPos = ofVec3f();

@@ -3,20 +3,22 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-    //
+    // Calculate distance between lines
+    
+    int xStride = ofGetWidth() / LINE_RESOLUTION;
+    int yStride = ofGetHeight() / LINE_RESOLUTION;
+    
+    // Create the lines vector with the corect starting positions
+    for (int i = 0; i <= ofGetWidth(); i += xStride) {
+        for (int j = 0; j <= ofGetHeight(); j += yStride) {
+            whiteLine line;
+            line.setStart(ofVec3f(i, j, 0));
+            // Set height if required
+            whiteLines.push_back(line);
+        }
+    }
     
     cam.setDistance(1000);
-    
-    // Create a line
-    whiteLine line;
-    line.setStart(ofVec3f(100, 0, 0));
-    line.setHeight(100);
-    whiteLines.push_back(line);
-    
-    whiteLine line2;
-    line2.setStart(ofVec3f(200, 0, 0));
-    line2.setHeight(100);
-    whiteLines.push_back(line2);
 }
 
 //--------------------------------------------------------------

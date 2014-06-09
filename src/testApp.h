@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "whiteLine.h"
 
-#define LINES_RESOLUTION = 4;
+const int LINE_RESOLUTION = 4;
 
 class testApp : public ofBaseApp{
 	public:
