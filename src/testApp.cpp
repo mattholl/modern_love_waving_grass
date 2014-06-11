@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
+    lineMesh.setMode(OF_PRIMITIVE_LINES);
     cam.setDistance(1000);
     
     // Calculate distance between lines
@@ -21,8 +22,9 @@ void testApp::setup(){
             
             whiteLine line;
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
-            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
-
+//            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
+            line.update();
+            
             // Set height if required
             float height = 150 + ofRandom(-10, 10);
             line.setHeight(height);
@@ -35,13 +37,29 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    float time = ofGetElapsedTimef();
-
+    //float time = ofGetElapsedTimef();
+    
+    lineMesh.clear();
+    
     for (int i = 0; i < whiteLines.size(); i++) {
-        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
-        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
-        whiteLines[i].updateRotation(x, y);
+//        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
+//        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
+//        whiteLines[i].updateRotation(x, y);
         whiteLines[i].update();
+        
+        lineMesh.addVertex(whiteLines[i].startPos);
+        lineMesh.addColor(ofColor::black);
+        
+        lineMesh.addVertex(whiteLines[i].endPos);
+        lineMesh.addColor(ofColor::white);
+    }
+    
+    // Add mesh indices
+    int numVerts = lineMesh.getNumVertices();
+    
+    for (int i = 0; i < numVerts; i += 2) {
+        lineMesh.addIndex(i);
+        lineMesh.addIndex(i + 1);
     }
 }
 
@@ -49,27 +67,13 @@ void testApp::update(){
 void testApp::draw(){
     ofEnableDepthTest();
     ofBackground(0);
-    ofPushMatrix();
     
-        cam.begin();
-//            ofDrawAxis(1000);
-            // Draw each line
-            for (int i = 0; i < whiteLines.size(); i++) {
-                ofPushMatrix();
-                    // Move to the start location for the line
-                    ofTranslate(whiteLines[i].startPos);
-                    ofSetColor(ofColor::white);
-                    ofSetLineWidth(whiteLines[i].width);
+    cam.begin();
+        ofDrawAxis(1000);
 
-                    whiteLines[i].draw();
+        lineMesh.draw();
 
-                ofPopMatrix();
-            }
-        cam.end();
-
-    ofPopMatrix();
-    
-
+    cam.end();
 }
 
 //--------------------------------------------------------------
