@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
+    ofSetFrameRate(60);
     lineMesh.setMode(OF_PRIMITIVE_LINES);
     cam.setDistance(1000);
     
@@ -22,7 +23,7 @@ void testApp::setup(){
             
             whiteLine line;
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
-//            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
+            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
             line.update();
             
             // Set height if required
@@ -37,14 +38,20 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    //float time = ofGetElapsedTimef();
     
-    lineMesh.clear();
+//    float time = ofGetElapsedTimef();
     
-    for (int i = 0; i < whiteLines.size(); i++) {
+//    for (int i = 0; i < whiteLines.size(); i++) {
 //        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
 //        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
 //        whiteLines[i].updateRotation(x, y);
+//    }
+    
+    
+    // Set the mesh vertices
+    lineMesh.clear();
+    
+    for (int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
         
         lineMesh.addVertex(whiteLines[i].startPos);

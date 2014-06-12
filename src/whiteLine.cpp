@@ -45,11 +45,18 @@ void whiteLine::setHeight(float newHeight) {
 }
 
 void whiteLine::update() {
-    // calculate vec3 of the end point
-//    ofVec3f end = ofVec3f(0, 0, height);
-    endPos.rotateRad(rotX, rotY, 0);
-//    endPos.set(end);
+//    endPos.rotateRad(rotX, rotY, 0);
+//    ofVec3f xRotAngle = ofVec3f(startPos.x, 0, 0);
     
+//    endPos.rotate(rotX, xRotAngle);
+    
+    ofVec3f lineVec = endPos - startPos;
+    lineVec.rotate(rotX, ofVec3f(0, 1, 0));
+    
+    endPos = startPos + lineVec;
+    
+    // Slowly return rotX to 0
+    ofLerpRadians(rotX, 0, 0.1);
 }
 
 void whiteLine::draw() {
