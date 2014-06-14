@@ -34,6 +34,10 @@ void testApp::setup(){
             
         }
     }
+    
+    orbiting = true;
+    axis = true;
+    
 }
 
 //--------------------------------------------------------------
@@ -74,18 +78,48 @@ void testApp::update(){
 void testApp::draw(){
     ofEnableDepthTest();
     ofBackground(0);
+
+    // Orbiting bool is set with "m" key
+    // Draw axis bool is set with "a" key
     
     cam.begin();
-        ofDrawAxis(1000);
-
+    
+        if(orbiting) {
+            cam.enableMouseInput();
+        } else {
+            cam.disableMouseInput();
+        }
+    
+        if (axis) {
+            ofDrawAxis(100000);
+        }
+    
         lineMesh.draw();
-
+    
     cam.end();
+
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    
+    if(key == 'm') {
+        orbiting = !orbiting;
+    }
+    
+    if(key == 'a') {
+        axis = !axis;
+    }
+    
+    if(key == 's') {
+        ofImage image;
+        
+        image.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+        
+        // Save the image to the dir from XML settings, path should end in /
+        image.saveImage("screengrab_" + ofToString(ofGetUnixTime()) + ".png");
+        cout << "Manual image saved : screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
+    }
 }
 
 //--------------------------------------------------------------

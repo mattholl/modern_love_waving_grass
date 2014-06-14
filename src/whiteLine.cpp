@@ -51,8 +51,18 @@ void whiteLine::update() {
 //    endPos.rotate(rotX, xRotAngle);
     
     ofVec3f lineVec = endPos - startPos;
-    lineVec.rotate(rotX, ofVec3f(0, 1, 0));
     
+    // Get the aangle between linevec and z axis
+    ofVec3f zAxis = ofVec3f(0, 0, 1);
+    
+    float angleDiff = zAxis.angle(lineVec);
+//    ofLog() << angleDiff;
+    
+    
+    // figure out angle of lineVec to return rotation angle to 0
+    // figure out what it should be start
+    
+    lineVec.rotate(rotX, ofVec3f(0, 1, 0));
     endPos = startPos + lineVec;
     
     // Slowly return rotX to 0

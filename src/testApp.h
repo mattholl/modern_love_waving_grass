@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "whiteLine.h"
 
-//const int LINE_RESOLUTION = 140;
-const int LINE_RESOLUTION = 5;
+const int LINE_RESOLUTION = 140;
+//const int LINE_RESOLUTION = 5;
 
 class testApp : public ofBaseApp{
 	public:
@@ -25,4 +25,6 @@ class testApp : public ofBaseApp{
     ofEasyCam cam;
     vector<whiteLine> whiteLines;
     ofMesh lineMesh;
+    bool orbiting;
+    bool axis;
 };
