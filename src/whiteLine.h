@@ -26,6 +26,9 @@ public:
     float rotX;
     float rotY;
     
+    // So that we can tell when lerping x to zero has stopped changing
+    float angleChangeX;
+    
     int width;
     
     void setStart(ofVec3f start);

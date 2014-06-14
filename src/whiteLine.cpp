@@ -50,15 +50,14 @@ void whiteLine::update() {
     
 //    endPos.rotate(rotX, xRotAngle);
     
+    // Get the vector of the line
     ofVec3f lineVec = endPos - startPos;
     
-    // Get the aangle between linevec and z axis
+    // Get the angle between linevec and z axis
     ofVec3f zAxis = ofVec3f(0, 0, 1);
     
-    float angleDiff = zAxis.angle(lineVec);
-//    ofLog() << angleDiff;
-    
-    
+    float angleDiff = zAxis.angleRad(lineVec);
+
     // figure out angle of lineVec to return rotation angle to 0
     // figure out what it should be start
     
@@ -66,7 +65,19 @@ void whiteLine::update() {
     endPos = startPos + lineVec;
     
     // Slowly return rotX to 0
-    ofLerpRadians(rotX, 0, 0.1);
+    rotX = ofLerpRadians(rotX, 0, 0.1);
+    
+//    ofLog() << "rotX";
+//    ofLog() << rotX;
+//    
+//    ofLog() << "angleDiff";
+//    ofLog() << angleDiff;
+    
+    // If rotX has returned to zero get the angle that would be required to return the line to parallel with z-axis
+    if (rotX <= 1.0e-3) {
+        rotX = -angleDiff;
+    }
+    
 }
 
 void whiteLine::draw() {
