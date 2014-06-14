@@ -45,33 +45,25 @@ void whiteLine::setHeight(float newHeight) {
 }
 
 void whiteLine::update() {
-//    endPos.rotateRad(rotX, rotY, 0);
-//    ofVec3f xRotAngle = ofVec3f(startPos.x, 0, 0);
     
-//    endPos.rotate(rotX, xRotAngle);
+    // 1. Update the rotation angle
+    //      To get the position of the endpoint
+    //      Calculate what the rotation in x and y should be next
+    // 2. TODO, add points to linePath -> mesh
     
     // Get the vector of the line
     ofVec3f lineVec = endPos - startPos;
     
     // Get the angle between linevec and z axis
     ofVec3f zAxis = ofVec3f(0, 0, 1);
-    
-    float angleDiff = zAxis.angleRad(lineVec);
 
-    // figure out angle of lineVec to return rotation angle to 0
-    // figure out what it should be start
-    
     lineVec.rotate(rotX, ofVec3f(0, 1, 0));
     endPos = startPos + lineVec;
     
+    float angleDiff = zAxis.angleRad(lineVec);
+    
     // Slowly return rotX to 0
     rotX = ofLerpRadians(rotX, 0, 0.1);
-    
-//    ofLog() << "rotX";
-//    ofLog() << rotX;
-//    
-//    ofLog() << "angleDiff";
-//    ofLog() << angleDiff;
     
     // If rotX has returned to zero get the angle that would be required to return the line to parallel with z-axis
     if (rotX <= 1.0e-3) {
