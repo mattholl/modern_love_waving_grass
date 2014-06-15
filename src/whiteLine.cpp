@@ -56,11 +56,25 @@ void whiteLine::update() {
     
     // Get the angle between linevec and z axis
     ofVec3f zAxis = ofVec3f(0, 0, 1);
-
+    
+    // Need to know what the x and y components of these are
+    float angleDiff = zAxis.angleRad(lineVec);
+    
+    // Apply the rotation around the yAxis
     lineVec.rotate(rotX, ofVec3f(0, 1, 0));
+//    lineVec.rotate(rotY, ofVec3f(1, 0, 0));
+    
+    // Update the end position with the new angle
     endPos = startPos + lineVec;
     
-    float angleDiff = zAxis.angleRad(lineVec);
+
+    //
+    ofLog() << "rotX";
+    ofLog() << rotX;
+    
+    ofLog() << "rotY";
+    ofLog() << rotY;
+
     
     // Slowly return rotX to 0
     rotX = ofLerpRadians(rotX, 0, 0.1);
@@ -69,6 +83,19 @@ void whiteLine::update() {
     if (rotX <= 1.0e-3) {
         rotX = -angleDiff;
     }
+    
+    // Quaternions
+    ofQuaternion xRotQuat(rotY, ofVec3f(1,0,0));
+    ofQuaternion yRotQuat(rotX, ofVec3f(0,1,0));
+
+    ofVec3f xRotVec3 = xRotQuat.getEuler();
+    ofVec3f yRotVec3 = yRotQuat.getEuler();
+    
+    ofLog() << "xRotVec3";
+    ofLog() << xRotVec3;
+
+    ofLog() << "yRotVec3";
+    ofLog() << yRotVec3;
     
 }
 

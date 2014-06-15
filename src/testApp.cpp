@@ -23,8 +23,8 @@ void testApp::setup(){
             
             whiteLine line;
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
-            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
-//            line.setRotation(1, 0);
+//            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
+            line.setRotation(1, 0);
             line.update();
             
             // Set height if required
@@ -44,14 +44,14 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    float time = ofGetElapsedTimef();
-    
-    for (int i = 0; i < whiteLines.size(); i++) {
+//    float time = ofGetElapsedTimef();
+//    
+//    for (int i = 0; i < whiteLines.size(); i++) {
 //        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
 //        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
-          whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3));
+//        whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.03));
 //        whiteLines[i].updateRotation(x, y);
-    }
+//    }
     
     
     // Set the mesh vertices

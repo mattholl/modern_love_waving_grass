@@ -23,8 +23,11 @@ public:
     
     float height;
     
+    // Rotation in x and y will be linearly interpolated to zero
     float rotX;
     float rotY;
+    
+    ofQuaternion curRot;
     
     // So that we can tell when lerping x to zero has stopped changing
     float angleChangeX;
