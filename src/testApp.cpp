@@ -23,8 +23,8 @@ void testApp::setup(){
             
             whiteLine line;
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
-//            line.setRotation(ofRandom(-0.03, 0.03), ofRandom(-0.03, 0.03));
-            line.setRotation(1, 0);
+            line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+//            line.setRotation(0.5, 0.5, 10);
             line.update();
             
             // Set height if required
