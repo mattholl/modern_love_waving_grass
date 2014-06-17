@@ -13,12 +13,11 @@ whiteLine::whiteLine() {
     // Default values
     height = 100.0;
     
-    width = 1;
-    
     startPos = ofVec3f();
     endPos = ofVec3f();
 }
 
+// The position of the base of the line.
 void whiteLine::setStart(ofVec3f start) {
     startPos.set(start);
     endPos.set(start);
@@ -30,6 +29,8 @@ void whiteLine::setHeight(float newHeight) {
     endPos.z = endPos.z + newHeight;
 }
 
+// Set the target rotation from rotation in x and y.
+// Set the rate at which this rotation should happen.
 void whiteLine::setRotation(float radX, float radY, float rate) {
     // Set the target quaternion rotation
     ofQuaternion xRotQuat, yRotQuat;
@@ -47,11 +48,12 @@ void whiteLine::setRotation(float radX, float radY, float rate) {
     lerpPos = 0;
 }
 
-// void whiteLine::returnUp
-
+// Deal with rotating the line towards the target vector.
+// If the target has been achieved (lerpPos is 1) reset the line to upright orientation.
 void whiteLine::update() {
     
     // Lerp towards targetQuat
+    // TODO? Should there be a check whether slerp is required
     currQuat.slerp(lerpPos, startQuat, targetQuat);
     
     // Update the position of the slerp for the next time through
@@ -69,15 +71,15 @@ void whiteLine::update() {
     
     // If the target rotation has been reached then reset the rotation to point the line straight back up
     if (lerpPos >= 1) {
-            // lerpT = 1 - target to upright quat
-        // Set the target to up vector
-        
+        // Reset dt for the lerp
         lerpStep = 0;
+
+        // Send the line back to an upright angle
+        setRotation(0, 0, 1000);
     }
     
-    // Should there be a check for whether the slerp needs to happen??????
-    
 }
+
 
 void whiteLine::draw() {
     // For debugging
