@@ -75,7 +75,7 @@ void whiteLine::update() {
         lerpStep = 0;
 
         // Send the line back to an upright angle
-        setRotation(0, 0, 1000);
+        setRotation(0, 0, 10);
     }
     
 }

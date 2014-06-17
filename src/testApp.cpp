@@ -36,6 +36,7 @@ void testApp::setup(){
         }
     }
     
+    // To draw the axis and allow mouse input
     orbiting = true;
     axis = true;
     
@@ -44,15 +45,18 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-//    float time = ofGetElapsedTimef();
-//    
-//    for (int i = 0; i < whiteLines.size(); i++) {
-//        float x = 0.01 * ofSignedNoise(time + 0.1 * i);
-//        float y = 0.01 * ofSignedNoise(time + 0.1 * i);
-//        whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.03));
-//        whiteLines[i].updateRotation(x, y);
-//    }
+    float time = ofGetElapsedTimef();
+    int timeInt = int(time);
     
+    if(timeInt % 2 == 0) {
+        for (int i = 0; i < whiteLines.size(); i++) {
+            float x = ofSignedNoise(time + 0.1 * i);
+            float y = ofSignedNoise(time + 0.1 * i);
+            whiteLines[i].setRotation(x, y, 10);
+            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+
+        }
+    }
     
     // Set the mesh vertices
     lineMesh.clear();
