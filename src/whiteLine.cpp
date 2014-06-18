@@ -48,6 +48,24 @@ void whiteLine::setRotation(float radX, float radY, float rate) {
     lerpPos = 0;
 }
 
+// Set rotation with no interpolation
+void whiteLine::setRotation(float radX, float radY) {
+    // Set the target quaternion rotation
+    ofQuaternion xRotQuat, yRotQuat;
+    xRotQuat.makeRotate(ofRadToDeg(radX), 0, 1, 0);
+    yRotQuat.makeRotate(ofRadToDeg(radY), 1, 0, 0);
+    
+    // Get the target from the x and y rotation quats
+    targetQuat = xRotQuat * yRotQuat;
+    
+    // Set the start quaternion from the current quaternion rotation
+    startQuat = currQuat;
+    
+    // Set the lerp control parameters so that the update function puts the line directly to the target
+    lerpStep = 0;
+    lerpPos = 1;
+}
+
 // Deal with rotating the line towards the target vector.
 // If the target has been achieved (lerpPos is 1) reset the line to upright orientation.
 void whiteLine::update() {

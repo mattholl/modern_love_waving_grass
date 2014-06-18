@@ -30,6 +30,7 @@ public:
     
     void setStart(ofVec3f start);
     void setRotation(float radX, float radY, float rate);
+    void setRotation(float radX, float radY);
     void setHeight(float newHeight);
     void update();
     void draw();

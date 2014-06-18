@@ -24,7 +24,6 @@ void testApp::setup(){
             whiteLine line;
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
             line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-//            line.setRotation(0.5, 0.5, 10);
             line.update();
             
             // Set height if required
@@ -36,6 +35,8 @@ void testApp::setup(){
         }
     }
     
+    ofLog() << "num lines : " << whiteLines.size();
+    
     // To draw the axis and allow mouse input
     orbiting = true;
     axis = true;
@@ -45,19 +46,33 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    // SETTING LINE ROTATIONS
     float time = ofGetElapsedTimef();
+    
+    // Set a pulse of random rotations every 10 seconds
     int timeInt = int(time);
     
-    if(timeInt % 2 == 0) {
+    if(timeInt % 10 == 0) {
         for (int i = 0; i < whiteLines.size(); i++) {
             float x = ofSignedNoise(time + 0.1 * i);
             float y = ofSignedNoise(time + 0.1 * i);
             whiteLines[i].setRotation(x, y, 10);
             whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-
         }
     }
     
+    // Set the rotation for a selection of lines
+    int numLines = 500;
+
+    for(int i = 0; i < numLines; i++) {
+        int randomIndex = rand() % whiteLines.size();
+        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+        whiteLines[randomIndex].setRotation(x, y, 10);
+    }
+    
+    
+    // DRAWING LINES
     // Set the mesh vertices
     lineMesh.clear();
     
