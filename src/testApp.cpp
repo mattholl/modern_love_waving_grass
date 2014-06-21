@@ -5,7 +5,15 @@ void testApp::setup(){
     
     ofSetFrameRate(60);
     lineMesh.setMode(OF_PRIMITIVE_LINES);
+//    cam.setDistance(1000);
+    
+    // Use the camMove node to move the camera programmatically
+    cam.lookAt(camMover);
+    cam.setAutoDistance(true);
     cam.setDistance(1000);
+    
+    // Set this as soon as we switch a camera mode on
+    autoMoveCamera = true;
     
     // Calculate distance between lines
     int worldWidth = ofGetWidth() * 4;
@@ -45,6 +53,40 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    // UPDATE THE CAMERA
+    if(autoMoveCamera) {
+        
+        if(camMode == 1) {
+            // Rotate camera around camMover
+            cam.roll(0.1);
+        }
+        
+        if(camMode == 2) {
+            // Dolly the camera towards the surface and rotate to look down the xaxis
+//            camMoverTarget
+            
+            float x = ofLerp(camMoverStart.x, camMoverTarget.x, 0.001);
+            float y = ofLerp(camMoverStart.y, camMoverTarget.y, 0.001);
+            float z = ofLerp(camMoverStart.z, camMoverTarget.z, 0.001);
+            
+            camMover.move(x, y, z);
+            cam.lookAt(camMover);
+            
+            // Rotate the camera incrementally towards 45deg
+        }
+        
+        // Orbit ofNode camMover
+        if(camMode == 3) {
+            float angleLatitude = (sin(ofGetElapsedTimef())) * 90;
+            float angleLongitude = (sin(ofGetElapsedTimef())) * 180;
+//            ofLog() << angle;
+            //cam.orbit(float longitude, float latitude, float radius, camMover);
+//            cam.orbit(angleLongitude, angleLatitude, 1000, camMover);
+        }
+    }
+    
+    
     
     // SETTING LINE ROTATIONS
     float time = ofGetElapsedTimef();
@@ -140,6 +182,39 @@ void testApp::keyPressed(int key){
         // Save the image to the dir from XML settings, path should end in /
         image.saveImage("screengrab_" + ofToString(ofGetUnixTime()) + ".png");
         cout << "Manual image saved : screengrab_" + ofToString(ofGetUnixTime()) + ".png" << endl;
+    }
+    
+    // Programmatic camera movement
+    if(key == '1') {
+//        autoMoveCamera = !autoMoveCamera;
+        
+        if(autoMoveCamera) {
+            camMode = 1;
+            
+            camMoverStart = camMover.getPosition();
+            
+            // Set the camMoverTarget vector to a sit on the plane at the far edge
+            camMoverTarget.set(-200, -200, 0);
+        }
+    }
+    
+    if(key == '2') {
+        
+        if(autoMoveCamera) {
+            camMode = 2;
+            camMoverStart = camMover.getPosition();
+            
+            // Set the camMoverTarget vector to a sit on the plane at the far edge
+            camMoverTarget.set(1000, 0, 0);
+        }
+    }
+    
+    // Orbit camMover node
+    if(key == '3') {
+        if(autoMoveCamera) {
+            camMode = 3;
+
+        }
     }
 }
 

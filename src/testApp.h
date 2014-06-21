@@ -23,6 +23,12 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     ofEasyCam cam;
+    ofNode camMover;
+    ofVec3f camMoverTarget;
+    ofVec3f camMoverStart;
+    bool autoMoveCamera;
+    int camMode;
+
     vector<whiteLine> whiteLines;
     ofMesh lineMesh;
     bool orbiting;
