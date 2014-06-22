@@ -128,6 +128,8 @@ void testApp::update(){
     for (int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
         
+        lineMesh.append(whiteLines[i].curveLineMesh);
+        
         // Loop over the vertices in the curve and add the vertices to the mesh vertices
         // Add the indices in here as well?
         
@@ -139,12 +141,12 @@ void testApp::update(){
     }
     
     // Add mesh indices
-    int numVerts = lineMesh.getNumVertices();
+//    int numVerts = lineMesh.getNumVertices();
     
-    for (int i = 0; i < numVerts; i += 2) {
+//    for (int i = 0; i < numVerts; i += 2) {
 //        lineMesh.addIndex(i);
 //        lineMesh.addIndex(i + 1);
-    }
+//    }
 }
 
 //--------------------------------------------------------------
@@ -167,10 +169,11 @@ void testApp::draw(){
             ofDrawAxis(100000);
         }
     
-//        lineMesh.draw();
+        lineMesh.draw();
+    
         for (int i = 0; i < whiteLines.size(); i++) {
 //            whiteLines[i].curveLineMesh.drawWireframe();
-            whiteLines[i].curveLine.draw();
+//            whiteLines[i].curveLine.draw();
         }
     
     cam.end();

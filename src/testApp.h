@@ -4,7 +4,8 @@
 #include "whiteLine.h"
 
 //const int LINE_RESOLUTION = 140;
-const int LINE_RESOLUTION = 5;
+const int LINE_RESOLUTION = 100;
+//const int LINE_RESOLUTION = 5;
 
 class testApp : public ofBaseApp{
 	public:

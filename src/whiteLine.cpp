@@ -15,6 +15,8 @@ whiteLine::whiteLine() {
     
     startPos = ofVec3f();
     endPos = ofVec3f();
+    
+    curveLineMesh.setMode(OF_PRIMITIVE_LINES);
 }
 
 // The position of the base of the line.
@@ -117,7 +119,21 @@ void whiteLine::update() {
 //    //     lineMesh.setMode(OF_PRIMITIVE_LINES);
     // just use mesh.append(polyLineMesh) with main update
 //    curveLineMesh = curveLine.getTessellation();
+
+    curveLineMesh.clear();
+    vector<ofVec3f> curveLineVertices = curveLine.getVertices();
     
+    for (int i = 0; i < curveLineVertices.size(); i++) {
+        // Add the vertices of the line to a mesh
+        curveLineMesh.addVertex(curveLineVertices[i]);
+        
+        // Add the indices for the line
+        if(i > 0) {
+            curveLineMesh.addIndex(i);
+            curveLineMesh.addIndex(i - 1);
+        }
+    }
+
 }
 
 
