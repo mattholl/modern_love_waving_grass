@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
+    ofSetVerticalSync(true);
     ofSetFrameRate(60);
     lineMesh.setMode(OF_PRIMITIVE_LINES);
 //    cam.setDistance(1000);

@@ -114,6 +114,8 @@ void whiteLine::update() {
     curveLine.curveTo(curveEnd);   // +z direction
     
     // Get the tesselation out and store in a local mesh?
+//    //     lineMesh.setMode(OF_PRIMITIVE_LINES);
+    // just use mesh.append(polyLineMesh) with main update
 //    curveLineMesh = curveLine.getTessellation();
     
 }

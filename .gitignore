@@ -51,6 +51,7 @@ bin/*.app
 # XCode 4
 xcuserdata
 *.xcworkspace
+*.xcodeproj/*
 
 # Code::Blocks
 *.depend
