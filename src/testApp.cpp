@@ -100,7 +100,9 @@ void testApp::update(){
             float x = ofSignedNoise(time + 0.1 * i);
             float y = ofSignedNoise(time + 0.1 * i);
             whiteLines[i].setRotation(x, y, 10);
-            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+//            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+//            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
+            whiteLines[i].setRotation(0.3, 0.3, 10);
         }
     }
     
@@ -125,6 +127,9 @@ void testApp::update(){
     
     for (int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
+        
+        // Loop over the vertices in the curve and add the vertices to the mesh vertices
+        // Add the indices in here as well?
         
 //        lineMesh.addVertex(whiteLines[i].startPos);
 //        lineMesh.addColor(ofColor::black);

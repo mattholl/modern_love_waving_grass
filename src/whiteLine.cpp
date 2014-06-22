@@ -96,24 +96,25 @@ void whiteLine::update() {
         setRotation(0, 0, 10);
     }
     
+    // Interpolate the line start and end points to make the curve Catmull-Rom
+    ofVec3f curveStart;
+    curveStart.set(startPos);
+    curveStart.z -= 100;
     
+    ofVec3f curveEnd;
+    curveEnd.set(endPos);
     
-    // Create a curved path
-    curveLine.setStrokeColor(ofColor::blue);
-    curveLine.setFillColor(ofColor::red);
-    curveLine.setFilled(true);
-    curveLine.setStrokeWidth(2);
-    curveLine.setCurveResolution(10);
+    // Vector for the curveEnd point to control the bend?
     
+    curveEnd.z -= 150;
     curveLine.clear();
-    curveLine.moveTo(startPos.x, startPos.y, startPos.z - 10); // -z direction so stright line up to start point
-    curveLine.lineTo(startPos);
+    curveLine.curveTo(curveStart); // -z direction so stright line up to start point
+    curveLine.curveTo(startPos);
     curveLine.curveTo(endPos);
-    curveLine.lineTo(endPos.x, endPos.y, endPos.z + 10);   // Move away from the centre? or just +z
-    curveLine.close();
+    curveLine.curveTo(curveEnd);   // +z direction
     
     // Get the tesselation out and store in a local mesh?
-    curveLineMesh = curveLine.getTessellation();
+//    curveLineMesh = curveLine.getTessellation();
     
 }
 
