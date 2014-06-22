@@ -54,6 +54,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    //--------------------------------------------------------------
     // UPDATE THE CAMERA
     if(autoMoveCamera) {
         
@@ -87,14 +88,14 @@ void testApp::update(){
     }
     
     
-    
+    //--------------------------------------------------------------
     // SETTING LINE ROTATIONS
     float time = ofGetElapsedTimef();
     
     // Set a pulse of random rotations every 10 seconds
     int timeInt = int(time);
     
-    if(timeInt % 10 == 0) {
+    if(timeInt % 2 == 0) {
         for (int i = 0; i < whiteLines.size(); i++) {
             float x = ofSignedNoise(time + 0.1 * i);
             float y = ofSignedNoise(time + 0.1 * i);
@@ -104,16 +105,20 @@ void testApp::update(){
     }
     
     // Set the rotation for a selection of lines
-    int numLines = 500;
-
-    for(int i = 0; i < numLines; i++) {
-        int randomIndex = rand() % whiteLines.size();
-        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
-        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
-        whiteLines[randomIndex].setRotation(x, y, 10);
+//    int numLines = 500;
+//
+//    for(int i = 0; i < numLines; i++) {
+//        int randomIndex = rand() % whiteLines.size();
+//        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+//        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+//        whiteLines[randomIndex].setRotation(x, y, 10);
+//    }
+    
+    for(int i = 0; i < whiteLines.size(); i++) {
+//        whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3));
     }
     
-    
+    //--------------------------------------------------------------
     // DRAWING LINES
     // Set the mesh vertices
     lineMesh.clear();
@@ -121,19 +126,19 @@ void testApp::update(){
     for (int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
         
-        lineMesh.addVertex(whiteLines[i].startPos);
-        lineMesh.addColor(ofColor::black);
+//        lineMesh.addVertex(whiteLines[i].startPos);
+//        lineMesh.addColor(ofColor::black);
         
-        lineMesh.addVertex(whiteLines[i].endPos);
-        lineMesh.addColor(ofColor::white);
+//        lineMesh.addVertex(whiteLines[i].endPos);
+//        lineMesh.addColor(ofColor::white);
     }
     
     // Add mesh indices
     int numVerts = lineMesh.getNumVertices();
     
     for (int i = 0; i < numVerts; i += 2) {
-        lineMesh.addIndex(i);
-        lineMesh.addIndex(i + 1);
+//        lineMesh.addIndex(i);
+//        lineMesh.addIndex(i + 1);
     }
 }
 
@@ -157,7 +162,11 @@ void testApp::draw(){
             ofDrawAxis(100000);
         }
     
-        lineMesh.draw();
+//        lineMesh.draw();
+        for (int i = 0; i < whiteLines.size(); i++) {
+//            whiteLines[i].curveLineMesh.drawWireframe();
+            whiteLines[i].curveLine.draw();
+        }
     
     cam.end();
 

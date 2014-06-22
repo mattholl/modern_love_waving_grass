@@ -21,6 +21,9 @@ public:
     ofVec3f startPos;
     ofVec3f endPos;
     
+    ofPath curveLine;
+    ofVboMesh curveLineMesh;
+    
     float height;
     
     // Rotation around x and y, when updated will set a start and target quaternion to be completed in a set lerp time

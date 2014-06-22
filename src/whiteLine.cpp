@@ -96,6 +96,25 @@ void whiteLine::update() {
         setRotation(0, 0, 10);
     }
     
+    
+    
+    // Create a curved path
+    curveLine.setStrokeColor(ofColor::blue);
+    curveLine.setFillColor(ofColor::red);
+    curveLine.setFilled(true);
+    curveLine.setStrokeWidth(2);
+    curveLine.setCurveResolution(10);
+    
+    curveLine.clear();
+    curveLine.moveTo(startPos.x, startPos.y, startPos.z - 10); // -z direction so stright line up to start point
+    curveLine.lineTo(startPos);
+    curveLine.curveTo(endPos);
+    curveLine.lineTo(endPos.x, endPos.y, endPos.z + 10);   // Move away from the centre? or just +z
+    curveLine.close();
+    
+    // Get the tesselation out and store in a local mesh?
+    curveLineMesh = curveLine.getTessellation();
+    
 }
 
 
