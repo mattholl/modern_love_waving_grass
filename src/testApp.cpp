@@ -42,7 +42,9 @@ void testApp::setup(){
             
             whiteLine line; // TODO can the line resolution be passed into the constructor??
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
-            line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+            
+            // Give the line an initial rotation
+//            line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
             line.update();
             
             // Set height if required
@@ -106,58 +108,59 @@ void testApp::update(){
     // Set a pulse of random rotations every 10 seconds
     int timeInt = int(time);
     
-    if(timeInt % 2 == 0) {
+    if(timeInt % 10 == 0) {
         for (int i = 0; i < whiteLines.size(); i++) {
             float x = ofSignedNoise(time + 0.1 * i);
             float y = ofSignedNoise(time + 0.1 * i);
             whiteLines[i].setRotation(x, y, 10);
-//            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-//            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
-            whiteLines[i].setRotation(0.3, 0.3, 10);
+            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
         }
     }
     
     // Set the rotation for a selection of lines
-//    int numLines = 500;
-//
-//    for(int i = 0; i < numLines; i++) {
-//        int randomIndex = rand() % whiteLines.size();
-//        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
-//        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
-//        whiteLines[randomIndex].setRotation(x, y, 10);
-//    }
-    
-    for(int i = 0; i < whiteLines.size(); i++) {
-//        whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3));
+    int numLines = 500;
+
+    for(int i = 0; i < numLines; i++) {
+        int randomIndex = rand() % whiteLines.size();
+        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+        whiteLines[randomIndex].setRotation(x, y, 10);
     }
     
     //--------------------------------------------------------------
     // DRAWING LINES
-    // Set the mesh vertices
+    
+    // Reset the mesh vertices - it's very likely that the vertices will be updated
     lineMesh.clear();
     
+    // Loop over the lines
     for (int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
         
-        lineMesh.append(whiteLines[i].curveLineMesh);
+        // Number of vertices that are there already
+        int prevNumVerts = lineMesh.getNumVertices();
         
-        // Loop over the vertices in the curve and add the vertices to the mesh vertices
-        // Add the indices in here as well?
+        // Get the vertices which form the curve
+        vector<ofVec3f> curveLineVertices = whiteLines[i].curveLine.getVertices();
+        int newNumVerts = curveLineVertices.size();
         
-//        lineMesh.addVertex(whiteLines[i].startPos);
-//        lineMesh.addColor(ofColor::black);
+        // Append to the mesh
+        lineMesh.addVertices(curveLineVertices);
         
-//        lineMesh.addVertex(whiteLines[i].endPos);
-//        lineMesh.addColor(ofColor::white);
+        // Loop over the vertices in the line and add the index to form each line
+        // Start at 1 because 0 in the mesh is the last added vertex
+        for (int j = 1; j < newNumVerts; j++) {
+        
+            lineMesh.addIndex(prevNumVerts + j);
+            lineMesh.addIndex(prevNumVerts + j - 1);
+            
+            // Use hsb or factor of grey to increment from back to white
+            lineMesh.addColor(ofColor::white);
+            
+        }
+        
     }
-    
-    // Add mesh indices
-//    int numVerts = lineMesh.getNumVertices();
-    
-//    for (int i = 0; i < numVerts; i += 2) {
-//        lineMesh.addIndex(i);
-//        lineMesh.addIndex(i + 1);
-//    }
 }
 
 //--------------------------------------------------------------
@@ -182,17 +185,16 @@ void testApp::draw(){
     
         lineMesh.draw();
     
-        for (int i = 0; i < whiteLines.size(); i++) {
-//            whiteLines[i].curveLineMesh.drawWireframe();
-//            whiteLines[i].curveLine.draw();
-        }
-    
     cam.end();
 
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    
+    if(key == 'b') {
+        ofLog() << "break";
+    }
     
     if(key == 'm') {
         orbiting = !orbiting;

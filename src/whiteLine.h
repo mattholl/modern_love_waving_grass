@@ -22,7 +22,6 @@ public:
     ofVec3f endPos;
     
     ofPolyline curveLine;
-    ofMesh curveLineMesh;
     
     float height;
     
