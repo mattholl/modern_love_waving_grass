@@ -2,9 +2,10 @@
 
 #include "ofMain.h"
 #include "whiteLine.h"
+#include "ofxXmlSettings.h"
 
 //const int LINE_RESOLUTION = 140;
-const int LINE_RESOLUTION = 100;
+//const int LINE_RESOLUTION = 100;
 //const int LINE_RESOLUTION = 5;
 
 class testApp : public ofBaseApp{
@@ -22,6 +23,13 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+    // Load the settings from bin/data/settings.xml
+    ofxXmlSettings XML;
+    
+    int lineDensity;
+    int planeSize;
+    int lineResolution;
     
     ofEasyCam cam;
     ofNode camMover;

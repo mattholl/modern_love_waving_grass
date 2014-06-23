@@ -5,7 +5,6 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     lineMesh.setMode(OF_PRIMITIVE_LINES);
-//    cam.setDistance(1000);
     
     // Use the camMove node to move the camera programmatically
     cam.lookAt(camMover);
@@ -15,21 +14,33 @@ void testApp::setup(){
     // Set this as soon as we switch a camera mode on
     autoMoveCamera = true;
     
+    // Load the settings file
+    if( XML.loadFile("settings.xml") ){
+        cout << "settings.xml loaded" << endl;
+    } else {
+        cout << "unable to load settings.xml check data/ folder" << endl;
+    }
+    
+    // Parse settings
+    lineDensity = XML.getValue("app-settings:mesh-data:line-density", 5);
+    planeSize = XML.getValue("app-settings:mesh-data:plane-size", 4);
+    lineResolution = XML.getValue("app-settings:mesh-data:line-resolution", 20);
+    
     // Calculate distance between lines
-    int worldWidth = ofGetWidth() * 4;
-    int worldHeight = ofGetHeight() * 4;
+    int worldWidth = ofGetWidth() * planeSize;
+    int worldHeight = ofGetHeight() * planeSize;
     
     int halfWorldWidth = worldWidth / 2;
     int halfWorldHeight = worldHeight / 2;
     
-    int xStride = worldWidth / LINE_RESOLUTION;
-    int yStride = worldHeight / LINE_RESOLUTION;
+    int xStride = worldWidth / lineDensity;
+    int yStride = worldHeight / lineDensity;
     
     // Create the lines vector with the corect starting positions
     for (int i = -halfWorldWidth; i <= halfWorldWidth; i += xStride) {
         for (int j = -halfWorldHeight; j <= halfWorldHeight; j += yStride) {
             
-            whiteLine line;
+            whiteLine line; // TODO can the line resolution be passed into the constructor??
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
             line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
             line.update();
