@@ -32,6 +32,7 @@ apps/*
 *.app/
 bin/*.app
 bin/*.app/Contents/*
+screendumps/
 *.pyc
 .svn/
 *.log
