@@ -31,6 +31,7 @@ apps/*
 *.mode*
 *.app/
 bin/*.app
+bin/*.app/Contents/*
 *.pyc
 .svn/
 *.log
