@@ -18,6 +18,11 @@ whiteLine::whiteLine(int lineResolution) {
     
     // The number of vectors which make up the line
     this->lineResolution = lineResolution;
+    
+    // Set the colours at each end
+    startColor = ofColor::black;
+    endColor = ofColor::white;
+    
 }
 
 // The position of the base of the line.

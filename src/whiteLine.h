@@ -26,6 +26,9 @@ public:
     
     float height;
     
+    ofColor startColor;
+    ofColor endColor;
+    
     // Rotation around x and y, when updated will set a start and target quaternion to be completed in a set lerp time
     // If the target quaternion is arrived at then the line will be returned to an upright direction
     ofQuaternion currQuat, startQuat, targetQuat;

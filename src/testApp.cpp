@@ -40,19 +40,17 @@ void testApp::setup(){
     for (int i = -halfWorldWidth; i <= halfWorldWidth; i += xStride) {
         for (int j = -halfWorldHeight; j <= halfWorldHeight; j += yStride) {
             
-            whiteLine line(lineResolution); // TODO can the line resolution be passed into the constructor??
+            // Pass the resolution that curves should be made to into the constructor
+            whiteLine line(lineResolution);
+            
+            // Create a slight variation in the starting position of the line
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
             
-            // Give the line an initial rotation
-//            line.setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-            line.update();
-            
-            // Set height if required
+            // Set the line height
             float height = 150 + ofRandom(-10, 10);
             line.setHeight(height);
             
             whiteLines.push_back(line);
-            
         }
     }
     
@@ -105,18 +103,18 @@ void testApp::update(){
     // SETTING LINE ROTATIONS
     float time = ofGetElapsedTimef();
     
-    // Set a pulse of random rotations every 10 seconds
-    int timeInt = int(time);
-    
-    if(timeInt % 10 == 0) {
-        for (int i = 0; i < whiteLines.size(); i++) {
-            float x = ofSignedNoise(time + 0.1 * i);
-            float y = ofSignedNoise(time + 0.1 * i);
-            whiteLines[i].setRotation(x, y, 10);
-            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
-        }
-    }
+//    // Set a pulse of random rotations every 10 seconds
+//    int timeInt = int(time);
+//    
+//    if(timeInt % 10 == 0) {
+//        for (int i = 0; i < whiteLines.size(); i++) {
+//            float x = ofSignedNoise(time + 0.1 * i);
+//            float y = ofSignedNoise(time + 0.1 * i);
+//            whiteLines[i].setRotation(x, y, 10);
+//            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+//            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
+//        }
+//    }
     
     // Set the rotation for a selection of lines
     int numLines = 500;
@@ -129,7 +127,7 @@ void testApp::update(){
     }
     
     //--------------------------------------------------------------
-    // DRAWING LINES
+    // MESH SETUP
     
     // Reset the mesh vertices - it's very likely that the vertices will be updated
     lineMesh.clear();
@@ -143,21 +141,33 @@ void testApp::update(){
         
         // Get the vertices which form the curve
         vector<ofVec3f> curveLineVertices = whiteLines[i].curveLine.getVertices();
-        int newNumVerts = curveLineVertices.size();
+        int numNewVerts = curveLineVertices.size();
         
-        // Append to the mesh
+        // Line start colour
+        ofColor startColor = whiteLines[i].startColor;
+        ofColor endColor = whiteLines[i].endColor;
+        
+        // Append this line vertices to the mesh
         lineMesh.addVertices(curveLineVertices);
         
         // Loop over the vertices in the line and add the index to form each line
-        // Start at 1 because 0 in the mesh is the last added vertex
-        for (int j = 1; j < newNumVerts; j++) {
+        // Lerp the colour for the vertex and add to the mesh
         
-            lineMesh.addIndex(prevNumVerts + j);
-            lineMesh.addIndex(prevNumVerts + j - 1);
+        float colorLerpStep = 1.0f / numNewVerts;
+        
+        for (int j = 0; j < numNewVerts; j++) {
             
-            // Use hsb or factor of grey to increment from back to white
-            lineMesh.addColor(ofColor::white);
+            // Index 0 will be a reference to the last vertex of the previous line so don't add it
+            if(j > 0) {
+                lineMesh.addIndex(prevNumVerts + j - 1);
+                lineMesh.addIndex(prevNumVerts + j);
+            }
             
+            // Add the vertex colour
+            // Lerp between the start and end colours
+            ofColor vertexColor = startColor.getLerped(endColor, colorLerpStep * j);
+            
+            lineMesh.addColor(vertexColor);
         }
         
     }
