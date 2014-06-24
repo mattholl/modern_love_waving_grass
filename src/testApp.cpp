@@ -40,7 +40,7 @@ void testApp::setup(){
     for (int i = -halfWorldWidth; i <= halfWorldWidth; i += xStride) {
         for (int j = -halfWorldHeight; j <= halfWorldHeight; j += yStride) {
             
-            whiteLine line; // TODO can the line resolution be passed into the constructor??
+            whiteLine line(lineResolution); // TODO can the line resolution be passed into the constructor??
             line.setStart(ofVec3f(i + ofRandom(-4, 4), j + ofRandom(-4, 4), 0));
             
             // Give the line an initial rotation

@@ -16,12 +16,13 @@
 
 class whiteLine {
 public:
-    whiteLine();
+    whiteLine(int lineResolution);
     
     ofVec3f startPos;
     ofVec3f endPos;
     
     ofPolyline curveLine;
+    int lineResolution;
     
     float height;
     

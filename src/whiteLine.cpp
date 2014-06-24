@@ -9,12 +9,15 @@
 #include "whiteLine.h"
 #include "ofMain.h"
 
-whiteLine::whiteLine() {
+whiteLine::whiteLine(int lineResolution) {
     // Default values
     height = 100.0;
     
     startPos = ofVec3f();
     endPos = ofVec3f();
+    
+    // The number of vectors which make up the line
+    this->lineResolution = lineResolution;
 }
 
 // The position of the base of the line.
@@ -108,10 +111,10 @@ void whiteLine::update() {
     
     curveEnd.z -= 150;
     curveLine.clear();
-    curveLine.curveTo(curveStart); // -z direction so stright line up to start point
-    curveLine.curveTo(startPos);
-    curveLine.curveTo(endPos);
-    curveLine.curveTo(curveEnd);   // +z direction
+    curveLine.curveTo(curveStart, lineResolution); // -z direction so stright line up to start point
+    curveLine.curveTo(startPos, lineResolution);
+    curveLine.curveTo(endPos, lineResolution);
+    curveLine.curveTo(curveEnd, lineResolution);   // +z direction
 
 }
 
