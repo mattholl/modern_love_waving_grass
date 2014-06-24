@@ -165,7 +165,7 @@ void testApp::update(){
             
             // Add the vertex colour
             // Lerp between the start and end colours
-            ofColor vertexColor = startColor.getLerped(endColor, colorLerpStep * j);
+            ofColor vertexColor = startColor.getLerped(endColor, colorLerpStep * (j + 1));
             
             lineMesh.addColor(vertexColor);
         }
