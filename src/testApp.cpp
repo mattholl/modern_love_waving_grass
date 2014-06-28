@@ -104,26 +104,28 @@ void testApp::update(){
     float time = ofGetElapsedTimef();
     
 //    // Set a pulse of random rotations every 10 seconds
-//    int timeInt = int(time);
-//    
-//    if(timeInt % 10 == 0) {
+    int timeInt = int(time);
+    
+//    if(timeInt % 2 == 0) {
 //        for (int i = 0; i < whiteLines.size(); i++) {
 //            float x = ofSignedNoise(time + 0.1 * i);
 //            float y = ofSignedNoise(time + 0.1 * i);
 //            whiteLines[i].setRotation(x, y, 10);
-//            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
-//            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
+////            whiteLines[i].setRotation(ofRandom(-0.3, 0.3), ofRandom(-0.3, 0.3), 10);
+////            whiteLines[i].setRotation(ofRandom(-0.75, 0.75), ofRandom(-0.75, 0.75), 10);
 //        }
 //    }
     
     // Set the rotation for a selection of lines
-    int numLines = 500;
+    int numLines = 5000;
 
-    for(int i = 0; i < numLines; i++) {
+    for(unsigned int i = 0; i < numLines; i++) {
         int randomIndex = rand() % whiteLines.size();
-        float x = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
-        float y = ofSignedNoise(time) * ofRandom(-0.3, 0.3);
+    
+        float x = ofSignedNoise(time * i) * 0.2;
+        float y = ofSignedNoise(time * i) * 0.2;
         whiteLines[randomIndex].setRotation(x, y, 10);
+
     }
     
     //--------------------------------------------------------------
@@ -133,7 +135,7 @@ void testApp::update(){
     lineMesh.clear();
     
     // Loop over the lines
-    for (int i = 0; i < whiteLines.size(); i++) {
+    for (unsigned int i = 0; i < whiteLines.size(); i++) {
         whiteLines[i].update();
         
         // Number of vertices that are there already
@@ -155,7 +157,7 @@ void testApp::update(){
         
         float colorLerpStep = 1.0f / numNewVerts;
         
-        for (int j = 0; j < numNewVerts; j++) {
+        for (unsigned int j = 0; j < numNewVerts; j++) {
             
             // Index 0 will be a reference to the last vertex of the previous line so don't add it
             if(j > 0) {
