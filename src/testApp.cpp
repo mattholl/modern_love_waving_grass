@@ -90,8 +90,8 @@ void testApp::update(){
         
         // Orbit ofNode camMover
         if(camMode == 3) {
-            float angleLatitude = (sin(ofGetElapsedTimef())) * 90;
-            float angleLongitude = (sin(ofGetElapsedTimef())) * 180;
+//            float angleLatitude = (sin(ofGetElapsedTimef())) * 90;
+//            float angleLongitude = (sin(ofGetElapsedTimef())) * 180;
 //            ofLog() << angle;
             //cam.orbit(float longitude, float latitude, float radius, camMover);
 //            cam.orbit(angleLongitude, angleLatitude, 1000, camMover);
@@ -104,7 +104,7 @@ void testApp::update(){
     float time = ofGetElapsedTimef();
     
 //    // Set a pulse of random rotations every 10 seconds
-    int timeInt = int(time);
+//    int timeInt = int(time);
     
 //    if(timeInt % 2 == 0) {
 //        for (int i = 0; i < whiteLines.size(); i++) {
@@ -117,7 +117,7 @@ void testApp::update(){
 //    }
     
     // Set the rotation for a selection of lines
-    int numLines = 5000;
+    unsigned int numLines = 5000;
 
     for(unsigned int i = 0; i < numLines; i++) {
         int randomIndex = rand() % whiteLines.size();
@@ -143,7 +143,7 @@ void testApp::update(){
         
         // Get the vertices which form the curve
         vector<ofVec3f> curveLineVertices = whiteLines[i].curveLine.getVertices();
-        int numNewVerts = curveLineVertices.size();
+        unsigned int numNewVerts = curveLineVertices.size();
         
         // Line start colour
         ofColor startColor = whiteLines[i].startColor;
