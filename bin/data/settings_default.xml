@@ -1,0 +1,9 @@
+<app-settings>
+    <mesh-data>
+        <line-density>100</line-density>
+        <plane-size>4</plane-size>
+        <line-resolution>10</line-resolution>
+        <save-image-path-production></save-image-path-production>
+        <save-image-path-development></save-image-path-development>
+    </mesh-data>
+</app-settings>
