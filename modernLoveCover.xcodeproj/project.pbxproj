@@ -32,6 +32,12 @@
 		EC0718541958CD3600DE3F86 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC07184E1958CD3600DE3F86 /* tinyxmlerror.cpp */; };
 		EC0718551958CD3600DE3F86 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC07184F1958CD3600DE3F86 /* tinyxmlparser.cpp */; };
 		EC0718561958CD3600DE3F86 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0718511958CD3600DE3F86 /* ofxXmlSettings.cpp */; };
+		EC0E6D401A72DB0D00060427 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = EC0E6D2D1A72DB0D00060427 /* Makefile */; };
+		EC0E6D411A72DB0D00060427 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0E6D311A72DB0D00060427 /* main.cpp */; };
+		EC0E6D421A72DB0D00060427 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0E6D321A72DB0D00060427 /* ofApp.cpp */; };
+		EC0E6D431A72DB0D00060427 /* TouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0E6D3B1A72DB0D00060427 /* TouchPad.cpp */; };
+		EC0E6D441A72DB0D00060427 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EC0E6D3D1A72DB0D00060427 /* README.md */; };
+		EC0E6D491A72DCD700060427 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E6D481A72DCD700060427 /* MultitouchSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
 			remoteInfo = openFrameworks;
+		};
+		EC0E6D461A72DB0D00060427 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC0E6D291A72DB0D00060427 /* example.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
+			remoteInfo = example;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -97,6 +110,23 @@
 		EC07184F1958CD3600DE3F86 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		EC0718511958CD3600DE3F86 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		EC0718521958CD3600DE3F86 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		EC0E6D251A72DB0D00060427 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EC0E6D271A72DB0D00060427 /* addons.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addons.make; sourceTree = "<group>"; };
+		EC0E6D281A72DB0D00060427 /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
+		EC0E6D291A72DB0D00060427 /* example.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = example.xcodeproj; sourceTree = "<group>"; };
+		EC0E6D2D1A72DB0D00060427 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		EC0E6D2E1A72DB0D00060427 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		EC0E6D2F1A72DB0D00060427 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		EC0E6D311A72DB0D00060427 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EC0E6D321A72DB0D00060427 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
+		EC0E6D331A72DB0D00060427 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
+		EC0E6D381A72DB0D00060427 /* MTTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTypes.h; sourceTree = "<group>"; };
+		EC0E6D391A72DB0D00060427 /* TouchPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPad.h; sourceTree = "<group>"; };
+		EC0E6D3B1A72DB0D00060427 /* TouchPad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchPad.cpp; sourceTree = "<group>"; };
+		EC0E6D3C1A72DB0D00060427 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		EC0E6D3D1A72DB0D00060427 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EC0E6D3F1A72DB0D00060427 /* ofxTouchPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTouchPad.h; sourceTree = "<group>"; };
+		EC0E6D481A72DCD700060427 /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +140,7 @@
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
 				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				EC0E6D491A72DCD700060427 /* MultitouchSupport.framework in Frameworks */,
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
 				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
@@ -130,6 +161,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E6D241A72DB0D00060427 /* ofxTouchPad */,
 				EC07184A1958CD3600DE3F86 /* ofxXmlSettings */,
 			);
 			name = addons;
@@ -138,6 +170,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E6D481A72DCD700060427 /* MultitouchSupport.framework */,
 				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -246,6 +279,102 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		EC0E6D241A72DB0D00060427 /* ofxTouchPad */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D251A72DB0D00060427 /* .gitignore */,
+				EC0E6D261A72DB0D00060427 /* example */,
+				EC0E6D341A72DB0D00060427 /* libs */,
+				EC0E6D3C1A72DB0D00060427 /* License.txt */,
+				EC0E6D3D1A72DB0D00060427 /* README.md */,
+				EC0E6D3E1A72DB0D00060427 /* src */,
+			);
+			name = ofxTouchPad;
+			path = ../../../../of_v0.8.4_osx_release/addons/ofxTouchPad;
+			sourceTree = "<group>";
+		};
+		EC0E6D261A72DB0D00060427 /* example */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D271A72DB0D00060427 /* addons.make */,
+				EC0E6D281A72DB0D00060427 /* config.make */,
+				EC0E6D291A72DB0D00060427 /* example.xcodeproj */,
+				EC0E6D2D1A72DB0D00060427 /* Makefile */,
+				EC0E6D2E1A72DB0D00060427 /* openFrameworks-Info.plist */,
+				EC0E6D2F1A72DB0D00060427 /* Project.xcconfig */,
+				EC0E6D301A72DB0D00060427 /* src */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		EC0E6D2A1A72DB0D00060427 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D471A72DB0D00060427 /* exampleDebug.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC0E6D301A72DB0D00060427 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D311A72DB0D00060427 /* main.cpp */,
+				EC0E6D321A72DB0D00060427 /* ofApp.cpp */,
+				EC0E6D331A72DB0D00060427 /* ofApp.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EC0E6D341A72DB0D00060427 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D351A72DB0D00060427 /* ofxTouchPad */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		EC0E6D351A72DB0D00060427 /* ofxTouchPad */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D361A72DB0D00060427 /* includes */,
+				EC0E6D3A1A72DB0D00060427 /* src */,
+			);
+			path = ofxTouchPad;
+			sourceTree = "<group>";
+		};
+		EC0E6D361A72DB0D00060427 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D371A72DB0D00060427 /* ofx */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		EC0E6D371A72DB0D00060427 /* ofx */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D381A72DB0D00060427 /* MTTypes.h */,
+				EC0E6D391A72DB0D00060427 /* TouchPad.h */,
+			);
+			path = ofx;
+			sourceTree = "<group>";
+		};
+		EC0E6D3A1A72DB0D00060427 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D3B1A72DB0D00060427 /* TouchPad.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EC0E6D3E1A72DB0D00060427 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6D3F1A72DB0D00060427 /* ofxTouchPad.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +420,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = EC0E6D2A1A72DB0D00060427 /* Products */;
+					ProjectRef = EC0E6D291A72DB0D00060427 /* example.xcodeproj */;
+				},
+				{
 					ProductGroup = E4328144138ABC890047C5CB /* Products */;
 					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
 				},
@@ -308,6 +441,13 @@
 			fileType = archive.ar;
 			path = openFrameworksDebug.a;
 			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EC0E6D471A72DB0D00060427 /* exampleDebug.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = exampleDebug.app;
+			remoteRef = EC0E6D461A72DB0D00060427 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -333,12 +473,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0E6D431A72DB0D00060427 /* TouchPad.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				EC0718531958CD3600DE3F86 /* tinyxml.cpp in Sources */,
+				EC0E6D411A72DB0D00060427 /* main.cpp in Sources */,
 				EC0718491958CD1B00DE3F86 /* whiteLine.cpp in Sources */,
 				EC0718541958CD3600DE3F86 /* tinyxmlerror.cpp in Sources */,
+				EC0E6D441A72DB0D00060427 /* README.md in Sources */,
 				EC0718551958CD3600DE3F86 /* tinyxmlparser.cpp in Sources */,
+				EC0E6D421A72DB0D00060427 /* ofApp.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				EC0E6D401A72DB0D00060427 /* Makefile in Sources */,
 				EC0718561958CD3600DE3F86 /* ofxXmlSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +576,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -519,6 +665,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
