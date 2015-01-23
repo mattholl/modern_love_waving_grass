@@ -59,6 +59,7 @@ void ofApp::setup(){
     // To draw the axis and allow mouse input
     orbiting = true;
     axis = true;
+    
 
 }
 

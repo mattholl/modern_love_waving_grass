@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "whiteLine.h"
 #include "ofxXmlSettings.h"
+#include "ofxTouchPad.h"
 
 //const int LINE_RESOLUTION = 140;
 //const int LINE_RESOLUTION = 100;
@@ -25,6 +26,12 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+    bool onPointerUp(ofx::PointerEventArgs& evt);
+    bool onPointerDown(ofx::PointerEventArgs& evt);
+    bool onPointerMove(ofx::PointerEventArgs& evt);
+    bool onPointerCancel(ofx::PointerEventArgs& evt);
+    
+    
     // Load the settings from bin/data/settings.xml
     ofxXmlSettings XML;
 
