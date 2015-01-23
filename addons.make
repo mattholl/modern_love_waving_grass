@@ -1,1 +1,3 @@
+ofxTileSaver
+ofxTouchPad
 ofxXmlSettings
