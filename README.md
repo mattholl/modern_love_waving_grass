@@ -1,6 +1,6 @@
 # modern_love_waving_grass
 ## About
-A small openFrameworks project inspired by [this Modern Love album cover](http://www.modern-love.co.uk/releases/miles-faint-hearted).
+An openFrameworks project inspired by [this Modern Love album cover](http://www.modern-love.co.uk/releases/miles-faint-hearted).
 
 The aim was to create a mechanism to arch the lines relative to their direction independently and efficiently in a coordinated manner. And to run on a Raspberry Pi. The best the rpi could manage was 3270 lines.
 
