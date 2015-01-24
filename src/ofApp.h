@@ -50,4 +50,6 @@ class ofApp : public ofBaseApp{
     ofMesh lineMesh;
     bool orbiting;
     bool axis;
+    
+    bool bShowInfo = true;
 };
