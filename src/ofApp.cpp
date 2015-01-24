@@ -205,21 +205,25 @@ void ofApp::draw(){
     // Draw GUI over the top
     
     if(bShowInfo) {
-        
-        // Draw a background
-        ofEnableAlphaBlending();
-        ofSetColor(255, 255, 255, 200);
-        ofRect(10, 500, 200, 300);
-        ofDisableAlphaBlending();
-        
-        ofSetColor(0, 0, 0);
-        stringstream reportStream;
-        reportStream << "KEYS" << endl;
-        reportStream << "----" << endl;
-        reportStream << "h - toggle this info" << endl;
-        ofDrawBitmapString(reportStream.str(), 20, 622);
-    
+        drawInfo();
     }
+}
+
+
+//--------------------------------------------------------------
+void ofApp::drawInfo(){
+    // Draw a background
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255, 200);
+    ofRect(10, 500, 200, 300);
+    ofDisableAlphaBlending();
+    
+    ofSetColor(0, 0, 0);
+    stringstream reportStream;
+    reportStream << "KEYS" << endl;
+    reportStream << "----" << endl;
+    reportStream << "h - toggle this info" << endl;
+    ofDrawBitmapString(reportStream.str(), 20, 622);
 }
 
 //--------------------------------------------------------------

@@ -26,6 +26,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+    void drawInfo();
+    
 //    bool onPointerUp(ofx::PointerEventArgs& evt);
 //    bool onPointerDown(ofx::PointerEventArgs& evt);
 //    bool onPointerMove(ofx::PointerEventArgs& evt);
