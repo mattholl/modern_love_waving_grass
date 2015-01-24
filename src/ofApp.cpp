@@ -215,7 +215,7 @@ void ofApp::drawInfo(){
     // Draw a background
     ofEnableAlphaBlending();
     ofSetColor(255, 255, 255, 200);
-    ofRect(10, 500, 200, 300);
+    ofRect(10, 520, 300, 170);
     ofDisableAlphaBlending();
     
     ofSetColor(0, 0, 0);
@@ -224,14 +224,16 @@ void ofApp::drawInfo(){
     reportStream << "KEYS" << endl;
     reportStream << "----" << endl;
     reportStream << "h - toggle this info" << endl;
-    reportStream << "m - toggle orbit" << endl;
-    reportStream << "a - toggle axes" << endl;
-    reportStream << "s - save screen" << endl;
-    reportStream << "1,2,3 - change camera mode" << endl;
+    reportStream << "m - toggle interaction" << endl;
+    reportStream << "a - toggle show axes" << endl;
+    reportStream << "s - save screen as png" << endl;
+    reportStream << "1,2,3 - change camera mode (WIP)" << endl;
     reportStream << "hold alt & drag to pan" << endl;
     reportStream << "hold ctrl & drag to zoom" << endl;
-    
-    ofDrawBitmapString(reportStream.str(), 20, 622);
+    reportStream << " " << endl;
+    reportStream << "NUM LINES : " << whiteLines.size() << endl;
+
+    ofDrawBitmapString(reportStream.str(), 20, 540);
 }
 
 //--------------------------------------------------------------
