@@ -220,9 +220,17 @@ void ofApp::drawInfo(){
     
     ofSetColor(0, 0, 0);
     stringstream reportStream;
+    
     reportStream << "KEYS" << endl;
     reportStream << "----" << endl;
     reportStream << "h - toggle this info" << endl;
+    reportStream << "m - toggle orbit" << endl;
+    reportStream << "a - toggle axes" << endl;
+    reportStream << "s - save screen" << endl;
+    reportStream << "1,2,3 - change camera mode" << endl;
+    reportStream << "hold alt & drag to pan" << endl;
+    reportStream << "hold ctrl & drag to zoom" << endl;
+    
     ofDrawBitmapString(reportStream.str(), 20, 622);
 }
 
